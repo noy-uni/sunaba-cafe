@@ -1,0 +1,745 @@
+/* =====================
+   Design System
+===================== */
+
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
+:root {
+
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-bg-light: #FDFAF5;
+  /* --color-text: #2e1f1a; */
+  /* --color-main: #3b2a24; */
+  --color-accent: #BA9639;
+  --color-white: #ffffff;
+  --color-border: #dddddd;
+
+  --primary-50: #f5efee;
+  --primary-100: #e7d8d3;
+  --primary-200: #d5b3a9;
+  --primary-300: #c49382;
+  --primary-400: #a47b6c;
+  --primary-500: #876458;
+  --primary-600: #6c4f45;
+  --primary-700: #533c34; 
+  --primary-800: #3b2a24; /* main */
+  --primary-900: #261a16; /* text */
+  --primary-950: #180f0c;
+
+  /* Typography */
+  --font-main: "Noto Serif JP", serif;
+
+  /* Font scale (rem) */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-s: 0.875rem;   /* 14px */
+  --font-m: 1rem;       /* 16px */
+  --font-l: 1.25rem;    /* 20px */
+  --font-xl: 1.5rem;  /* 24px */
+  --font-xxl: 2.25rem;  /* 36px */
+  --font-3xl: 4rem;     /* 64px */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  --icon-size: var(--font-xl); /* アイコンを24pxにする場合 */
+ 
+  /* Spacing (8px grid) */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 3.5rem;   /* 56px */
+  --space-8: 4rem;     /* 64px */
+  --space-9: 4.5rem;   /* 72px */
+  --space-10: 5rem;    /* 80px */
+
+  /* Radius */
+  --radius-s: 0.5rem;   /* 8px */
+  --radius-m: 0.75rem;  /* 12px */
+  --radius-l: 1rem;     /* 16px */
+  --radius-round: 999px;
+
+  /* Shadow */
+  --shadow-card: 0 0.25rem 0.625rem rgba(0,0,0,0.08);
+}
+
+/* =====================
+   Base
+===================== */
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--font-m);
+  color: var(--primary-900);
+  background: var(--color-bg);
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section {
+  padding: var(--space-10) 0;
+  text-align: center;
+}
+
+.bg-light {
+  background: var(--color-bg-light);
+}
+
+/* =====================
+   Header
+===================== */
+
+.header {
+  background: var(--primary-800);
+  color: var(--color-white);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+}
+
+.logo {
+  font-size: var(--font-l);
+  margin: 0;
+  color: var(--color-white);
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: var(--font-s);
+}
+
+/* =====================
+   Hero
+===================== */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-white);
+  text-shadow: 0 0.1875rem 0.375rem rgba(0,0,0,0.5);
+  text-align: center;
+  width: 100%;
+  padding: 0 var(--space-2);
+}
+
+.hero-content h2 {
+  font-size: var(--font-3xl);
+  line-height: 160%;
+  margin-bottom: var(--space-1);
+}
+
+.hero-content p {
+  font-size: var(--font-l);
+}
+
+/* 文字が流れる窓の役割 */
+.ticker-wrapper {
+  flex: 1;
+  overflow: hidden; /* はみ出した分は見せない */
+  white-space: nowrap;
+  position: relative;
+  margin-right: var(--space-10);
+  margin-left: var(--space-5);
+}
+
+/* 実際に動くテキスト */
+.ticker-text {
+  display: inline-block;
+  padding-left: 100%; /* 最初は画面の右端からスタート */
+  animation: ticker 23s linear infinite; /* 15秒かけて左へ、それを無限に繰り返す */
+}
+
+/* アニメーションの定義 */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* マウスを乗せたら動きを止める（読みやすくする気遣い） */
+.ticker-wrapper:hover .ticker-text {
+  animation-play-state: paused;
+}
+
+
+/* バッジの基本スタイル（ゴシック体） */
+.badge-status {
+  font-family: "Noto Sans JP", sans-serif;
+  padding: 4px 14px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: var(--font-xs);
+  letter-spacing: 0.1em;
+  margin-right: var(--space-2);
+  display: inline-block;
+  text-align: center;
+  min-width: 80px;
+}
+
+/* 営業中：抹茶のような落ち着いた緑 */
+.status-open {
+  background-color: #6d8c51;
+  color: #fff;
+}
+
+/* 営業時間外：夜や準備中をイメージしたネイビーグレーなど */
+.status-close {
+  background-color: #4a4a4a !important; /* または #2e1f1a (メインカラー) など */
+  color: #fff;
+}
+
+/* 定休日：馴染みの良いグレーベージュ */
+.status-holiday {
+  background-color: #92847a;
+  color: #fff;
+}
+
+/* 臨時休業：警告すぎない深みのあるオレンジ */
+.status-temp-close {
+  background-color: #b35a33;
+  color: #fff;
+}
+
+
+/* =====================
+   Section Titles
+===================== */
+
+.section-sub {
+  color: var(--color-accent);
+  letter-spacing: 0.125rem;
+  font-size: var(--font-s);
+  font-weight: var(--weight-bold);
+}
+
+.section-title {
+  font-size: var(--font-xxl);
+  margin: var(--space-1) 0 var(--space-2);
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  color: var(--primary-800);
+}
+
+.title-line {
+  width: 40px;
+  height: 2px;  
+  background-color: var(--color-accent);
+  margin: 0 auto var(--space-8);
+  border-radius: var(--radius-s);
+}
+
+/* =====================
+   Layout Blocks
+===================== */
+
+.about-flex {
+  display: flex;
+  justify-content: flex-end; /* 画像を右側に寄せる */
+  position: relative; /* 子要素を自由に配置するための基準 */
+  padding: var(--space-10) 0;
+  min-height: 550px; /* 全体の高さを確保 */
+}
+
+.dual-flex,
+.access-flex {
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+  text-align: left;
+}
+
+.dual-flex {
+  align-items: flex-start;
+}
+
+
+
+/* =====================
+   News
+===================== */
+.calendar-beige {
+  filter: sepia(60%) brightness(105%) saturate(80%);
+  padding: var(--space-1);
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-item time {
+  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+  font-size: var(--font-s);
+}
+
+.news-badge {
+  background: transparent;           
+  border: 1px solid var(--primary-400); 
+  color: var(--primary-400);       
+  padding: 0.1rem 0.5rem;
+  font-size: var(--font-xs);
+  border-radius: 2px;                
+  flex-shrink: 0;
+  width: 4rem; 
+  text-align: center; 
+  display: inline-block; 
+}
+
+/* =====================
+   About
+===================== */
+.about-flex {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* 全体のレイアウト */
+.about-new-layout {
+  padding: var(--space-10) 0;
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: center;
+}
+
+/* --- 1. 写真の配置 --- */
+.about-top {
+  display: block; /* Flexを解除 */
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--space-10);
+}
+
+
+
+.about-image {
+  width: 100%;      /* 少し幅を絞る */
+  margin-left: 0;  /* 左寄せ */
+  z-index: 1;
+}
+
+.about-image img {
+  width: 100%;
+  /* aspect-ratio: 16 / 9; */
+  object-fit: cover;
+  border-radius: 0; /* 角丸なしでシャープに */
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+}
+
+/* --- 2. 縦書きメッセージ（写真に重ねる） --- */
+.vertical-message {
+  position: absolute;
+  top: 15%;        /* 写真の途中から開始 */
+  right: 5%;      /* 写真の右側に配置 */
+  writing-mode: vertical-rl;
+  font-family: var(--font-main);
+  font-size: 3.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: var(--primary-800);
+  z-index: 10;
+  
+  
+  /* 背景をうっすら敷いて写真の上でも読みやすくする */
+  background: rgba(255, 250, 245, 0.5); /* 白背景をさらに薄く */
+  backdrop-filter: blur(16px);           /* 背景の写真を少しぼかす（高級感が出ます） */
+  padding: var(--space-8) var(--space-4); /* 上下の余白をたっぷり取る */
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05); /* 影をうっすらつけて浮かせる */
+  white-space: nowrap;
+}
+
+.line-1 { display: block; }
+.line-2 { 
+  display: block; 
+  margin-top: 2.5em; /* ★2行目をぐっと下に下げる */
+  margin-right: 0.5em; /* ★少し左にずらす */
+}
+
+/* --- 3. 下段のテキスト（さらに下に配置） --- */
+.about-bottom {
+  max-width: 600px;
+  margin-left: 5%;  /* 少し右に寄せることでジグザグを作る */
+  margin-right: auto;
+  text-align: left;   /* あえて左揃えにして緊張感を出す */
+}
+
+.centered-comment {
+  font-size: 1.1rem;
+  line-height: 2.8rem;
+  letter-spacing: 0.15em;
+  color: var(--primary-900);
+}
+
+
+
+/* =====================
+   Menu
+===================== */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.menu-card {
+  background: var(--color-white);
+  padding: var(--space-4);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-0.25rem);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 240px; /* 200px */
+  object-fit: cover;
+  /* border-radius: var(--radius-s); */
+}
+
+.menu-card h4 {
+  font-size: var(--font-m);
+}
+
+.menu-card p {
+  font-size: var(--font-s);
+}
+
+.menu-tag {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: var(--font-xs);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-round);
+}
+
+.price {
+  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+  font-size: var(--font-m);
+}
+
+/* =====================
+   Buttons
+===================== */
+
+/* ボタンを包む枠の指定 */
+.news-btn-wrapper {
+  display: flex;
+  justify-content: flex-end; /* これで右寄せになります */
+  margin-top: var(--space-4); /* リストとの間に適切な隙間を作る */
+}
+
+/* ボタン自体の微調整 */
+.btn {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4); /* 少し大きくすると押しやすくなります */
+  background: var(--color-accent);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: var(--radius-round);
+  font-size: var(--font-s);
+  /* transition: opacity 0.3s; */
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05); /* 少しだけ大きくして「ボタン感」を強める */
+  opacity: 0.9;}
+
+/* =====================
+   Access
+===================== */
+
+/* Googleマップのiframe（地図）をサイトの色に合わせる */
+iframe[src*="google.com/maps"] {
+  filter: sepia(35%) brightness(105%) saturate(90%) hue-rotate(-10deg)!important;
+  border: none !important;
+  border-radius: 12px; /* カレンダーと同じ丸みに設定 */
+  width: 100% !important; /* スマホで見てもはみ出さないように */
+}
+
+
+.access-info dl {
+  display: grid;
+  grid-template-columns: 8rem 1fr; 
+  row-gap: var(--space-2);
+  font-size: var(--font-m);
+}
+
+.map-placeholder {
+  width: 25rem; /* 400px */
+  height: 15.5rem; /* 248px */
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-m);
+  font-size: var(--font-m);
+}
+
+/* =====================
+   Footer
+===================== */
+
+.footer {
+  background: var(--primary-800);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--space-4) 0;
+}
+
+.footer-nav a {
+  color: var(--color-white);
+  margin: 0 var(--space-1);
+  text-decoration: none;
+  font-size: var(--font-s);
+}
+
+
+.header-fixed {
+  position: fixed;
+  top: -80px; /* 上に隠す */
+  left: 0;
+  width: 100%;
+  background: rgba(59, 42, 36, 0.95); /* 少し透けさせて高級感を */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+  transition: top 0.4s ease;
+  padding: var(--space-1) 0;
+}
+
+.header-fixed.is-show {
+  top: 0; /* スクロールしたら降りてくる */
+}
+
+.logo-s { font-size: var(--font-m); margin: 0; color: #fff; }
+
+/* --- 下部固定バー --- */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary-900);
+  color: var(--color-white);
+  padding: var(--space-1) 0;
+  z-index: 1000;
+  transition: opacity 0.3s;
+  font-family: "Noto Sans JP", sans-serif; 
+  font-weight: 500; 
+  letter-spacing: 0.05em; 
+}
+
+.bottom-bar.is-hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.master-msg { display: flex; align-items: center; gap: var(--space-2); }
+
+.master-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  background: #fff;
+}
+
+.master-text { font-size: var(--font-s); margin: 0; }
+
+.bar-info { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-s); }
+
+.badge-mini {
+  background: var(--color-accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: var(--font-xs);
+}
+
+/* --- アニメーションの初期状態：透明で下にずらす --- */
+.reveal {
+  opacity: 0 !important;
+  transform: translateY(50px) !important;
+  transition: opacity 1.5s ease, transform 1.5s ease !important;
+}
+
+/* --- JSでこのクラスがついたら表示：不透明で元の位置へ --- */
+.reveal.is-show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* --- タイミングのズレ --- */
+.delay-1 { transition-delay: 0.2s !important; }
+.delay-2 { transition-delay: 0.4s !important; }
+.delay-3 { transition-delay: 0.5s !important; }
+
+
+
+/* =====================
+   Responsive
+===================== */
+
+@media (max-width: 48rem) {
+  .about-flex {
+    flex-direction: column;
+    padding: var(--space-6) 0;
+  }
+  .about-image {
+    flex: 0 0 100%;
+    margin-bottom: var(--space-4);
+  }
+  .about-text {
+    margin-left: 0; /* 重なり解除 */
+    padding: var(--space-2);
+    background: transparent; /* 背景も消してスッキリ */
+  }
+  .about-text h3 {
+    writing-mode: horizontal-tb; /* スマホは横書きが見やすい */
+    height: auto;
+    width: 100%;
+    margin-bottom: var(--space-2);
+  }
+}
+
+/* アイコン自体の基本スタイル */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,   /* 1にすると塗りつぶし */
+    'wght' 400, /* ここで太さを調整（100〜700） */
+    'GRAD' 0,
+    'opsz' 24;
+  
+  font-size: var(--icon-size); /* 変数で管理！ */
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+/* スクロールダウン全体のコンテナ */
+.scroll-down-icon {
+  position: absolute;
+  bottom: 30px; /* 画面の一番下から少し浮かせる */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  color: #fff; /* 文字を白に */
+  font-family: var(--font-main);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* マウスアイコン本体 */
+.scroll {
+  margin-inline: auto;
+  margin-bottom: 10px; /* 文字との隙間 */
+  position: relative;
+  width: 30px;
+  height: 50px;
+}
+
+/* マウスホイール（動く点） */
+.scroll::before {
+  animation: 2s scroll-animation infinite;
+  background: #fff; /* ★黒から白に変更 */
+  border-radius: 3px;
+  content: "";
+  height: 8px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 2px;
+}
+
+/* マウスの外枠 */
+.scroll::after {
+  border: 1px solid rgba(255, 255, 255, 0.6); /* ★少し透けた白にすると上品 */
+  border-radius: 20px;
+  content: "";
+  display: block;
+  height: 46px;
+  width: 26px;
+  margin: 0 auto;
+}
+
+/* アニメーション（名前が既存のものと被らないよう変更） */
+@keyframes scroll-animation {
+  0% {
+    opacity: 0;
+    top: 15%;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 50%;
+  }
+}

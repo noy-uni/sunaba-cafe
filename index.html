@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>すなばカフェ | 天草の海風と、琥珀色の一杯。</title>
+    <meta name="description" content="熊本県天草市ポルトにある喫茶店 すなばカフェ。ネルドリップ珈琲と静かな時間をお楽しみください。">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0" />
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header id="global-header" class="header-fixed">
+      <div class="container header-inner">
+        <h1 class="logo">すなばカフェ</h1>
+        <nav>
+          <ul class="nav">
+            <li><a href="#about">お店について</a></li>
+            <li><a href="#menu">お品書き</a></li>
+            <li><a href="#info">おしらせ</a></li>
+            <li><a href="#access">店舗情報</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <header class="header" id="top-header">
+    </header>
+    <main>
+      <div id="scroll-trigger"></div>
+      <!-- メインフッター -->
+      <div id="sticky-bar" class="bottom-bar">
+        <div class="container bar-inner">
+          <span class="news-label-mini">News</span>
+            <div class="ticker-wrapper">
+              <p class="latest-news-title ticker-text">
+                新しい豆「エチオピア・イルガチェフェ」が入荷しました。ぜひ香りをお楽しみください。
+              </p>
+            </div>
+          <div class="bar-info">
+            <span id="shop-status" class="badge-status">営業中</span>
+            <span class="info-item">
+              <span class="material-symbols-outlined">schedule</span>10:00〜18:00
+            </span>
+          </div>
+        </div>
+      </div>
+      </div>
+      <!-- hero -->
+      <section>
+        <div class="hero">
+          <img src="images/hero.png" alt="すなばカフェ店内">
+          <div class="hero-content">
+            <h2>天草の海風と、<br>琥珀色の一杯。</h2>
+            <p>あわただしい日常を忘れ、静かなひとときを。</p>
+        </div>
+      </section>
+      <!-- About -->
+      <section id="about" class="section">
+        <span class="section-sub">ABOUT</span>
+        <h3 class="section-title">お店について</h3>
+        <div class="title-line"></div>
+        <div class="container about-new-layout">
+          <div class="about-top">
+            <div class="about-image reveal delay-1">
+              <img src="images/about.jpg" alt="すなばカフェの店主">
+            </div>
+            <h3 class="vertical-message reveal delay-2">
+              <span class="line-1">変わらぬ味と、</span>
+              <span class="line-2">変わらぬ時間。</span></h3>
+          </div>
+        
+          <div class="about-bottom reveal delay-3">
+            <p class="centered-comment">
+              熊本・天草の静かな街角で、私たちは一杯の珈琲と向き合い続けています。<br>
+              丁寧に時間をかけて抽出するネルドリップ珈琲は、深いコクと琥珀色の輝きが特徴です。<br>
+              あわただしい日常のスイッチを切り、ただ静かに流れる海風を感じる。<br>
+              そんな贅沢な「何もしない時間」を、お愉しみください。
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Menu -->
+      <section id="menu" class="section bg-light">
+        <span class="section-sub">MENU</span>
+        <h3 class="section-title">お品書き</h3>
+        <div class="title-line"></div>
+        <div class="container menu-grid">
+          <article class="menu-card">
+            <span class="menu-tag">人気No.1</span>
+            <img src="images/img_coffe.png" alt="オリジナルコーヒー">
+            <h4>オリジナルコーヒー</h4>
+            <p>深煎りでコクのある当店の看板メニュー。</p>
+            <span class="price">¥550</span>
+          </article>
+          <article class="menu-card">
+            <img src="images/img_creamsoda.png" alt="メロンクリームソーダ">
+            <h4>メロンクリームソーダ</h4>
+            <p>宝石のような緑に濃厚なバニラを添えて。</p>
+            <span class="price">¥650</span>
+          </article>
+          <article class="menu-card">
+            <img src="images/img_shortCake.png" alt="ショートケーキ">
+            <h4>ショートケーキ</h4>
+            <p>甘さ控えめの生クリームと旬の苺。</p>
+            <span class="price">¥600</span>
+          </article>
+        </div>
+      </section>
+      <!-- Calendar & News -->
+      <section id="info" class="section">
+        <span class="section-sub">information</span>
+        <h3 class="section-title">おしらせ</h3>
+        <div class="title-line"></div>
+        <div class="container dual-flex">
+          <!-- Calendar -->
+          <div class="calendar-beige">
+            <iframe 
+              src="https://calendar.google.com/calendar/embed?src=9284107bbc352117e18d7c6f1267382b555fced0421dfe2ae0f899b97d53b06f%40group.calendar.google.com&ctz=Asia%2FTokyo"
+              width="400" 
+              height="352"
+              style="border:0;"
+              loading="lazy">
+            </iframe>
+          </div>
+          <!-- News -->
+          <div>
+            <ul class="news-list">
+              <li class="news-item">
+                <time datetime="2026-01-10">2026.01.16</time>
+                <span class="news-badge">新商品</span>
+                <p>新しい豆「エチオピア・イルガチェフェ」が入荷しました。</p>
+              </li>
+              <li class="news-item">
+                <time datetime="2026-01-10">2026.01.10</time>
+                <span class="news-badge">季節限定</span>
+                <p>季節限定「ホットチョコレート」が始まりました。</p>
+              </li>
+              <li class="news-item">
+                <time datetime="2025-12-10">2025.12.10</time>
+                <span class="news-badge">お知らせ</span>
+                <p>年末年始の営業について</p>
+              </li>
+              <li class="news-item">
+                <time datetime="2025-05-10">2025.05.10</time>
+                <span class="news-badge">季節限定</span>
+                <p>季節限定「あじさいソーダ」が始まりました。</p>
+              </li>
+            </ul>
+            <!-- ボタン -->
+            <div class="news-list-container">
+              <ul class="news-list">
+                </ul>
+              <div class="news-btn-wrapper">
+                <a href="#" class="btn">お知らせ一覧へ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Access -->
+      <section id="access" class="section bg-light">
+        <span class="section-sub">ACCESS</span>
+        <h3 class="section-title">店舗情報</h3>
+        <div class="title-line"></div>
+        <div class="container access-flex">
+          <div class="access-map">
+            <div class="map-placeholder"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3366.611226933413!2d130.18675807554533!3d32.45633950030532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x353fee545b5d0d71%3A0x738ac9674fe0c95a!2z5aSp6I2J5a6d5bO25Zu96Zqb5Lqk5rWB5Lya6aSo44Od44Or44OI!5e0!3m2!1sja!2sjp!4v1768480159818!5m2!1sja!2sjp" width="720" height="352" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          </div>
+          <div class="access-info">
+            <dl>
+              <dt><span class="material-symbols-outlined">location_on</span>住所</dt><dd>〒863-0023　熊本県天草市中央新町15-7</dd>
+              <dt><span class="material-symbols-outlined">schedule</span>営業時間</dt><dd>10:00〜18:00</dd>
+              <dt><span class="material-symbols-outlined">event_busy</span>定休日</dt><dd>月曜日</dd>
+              <dt><span class="material-symbols-outlined">call</span>電話番号</dt><dd>0000-00-0000</dd>
+              <dt><span class="material-symbols-outlined">local_parking</span>駐車場</dt><dd>店舗前3台あり</dd>
+              <dt><span class="material-symbols-outlined">payments</span>支払い方法</dt><dd>現金のみ</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="#about">お店について</a>
+        <a href="#menu">お品書き</a>
+        <a href="#info">おしらせ</a>
+        <a href="#access">店舗情報</a>
+      </nav>
+      <p>© SUNABA CAFE</p>
+    </footer>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
