@@ -716,7 +716,7 @@ iframe[src*="google.com/maps"] {
     width: 100%;        /* 幅を100%にすることで強制的に改行させる */
     justify-content: center;
     margin: var(--space-1);
-    padding-top: 4px;
+    padding-top: var(--space-1);
     border-top: 1px solid rgba(255,255,255,0.1);
     gap: var(--space-2);
   }
