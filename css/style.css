@@ -640,32 +640,6 @@ iframe[src*="google.com/maps"] {
 
 
 
-/* =====================
-   Responsive
-===================== */
-
-@media (max-width: 48rem) {
-  .about-flex {
-    flex-direction: column;
-    padding: var(--space-6) 0;
-  }
-  .about-image {
-    flex: 0 0 100%;
-    margin-bottom: var(--space-4);
-  }
-  .about-text {
-    margin-left: 0; /* 重なり解除 */
-    padding: var(--space-2);
-    background: transparent; /* 背景も消してスッキリ */
-  }
-  .about-text h3 {
-    writing-mode: horizontal-tb; /* スマホは横書きが見やすい */
-    height: auto;
-    width: 100%;
-    margin-bottom: var(--space-2);
-  }
-}
-
 /* アイコン自体の基本スタイル */
 .material-symbols-outlined {
   font-variation-settings:
@@ -680,66 +654,126 @@ iframe[src*="google.com/maps"] {
   margin-right: 1rem;
 }
 
-/* スクロールダウン全体のコンテナ */
-.scroll-down-icon {
-  position: absolute;
-  bottom: 30px; /* 画面の一番下から少し浮かせる */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 10;
-  color: #fff; /* 文字を白に */
-  font-family: var(--font-main);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
 
-/* マウスアイコン本体 */
-.scroll {
-  margin-inline: auto;
-  margin-bottom: 10px; /* 文字との隙間 */
-  position: relative;
-  width: 30px;
-  height: 50px;
-}
+/* =====================
+   Responsive
+===================== */
 
-/* マウスホイール（動く点） */
-.scroll::before {
-  animation: 2s scroll-animation infinite;
-  background: #fff; /* ★黒から白に変更 */
-  border-radius: 3px;
-  content: "";
-  height: 8px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  width: 2px;
-}
-
-/* マウスの外枠 */
-.scroll::after {
-  border: 1px solid rgba(255, 255, 255, 0.6); /* ★少し透けた白にすると上品 */
-  border-radius: 20px;
-  content: "";
-  display: block;
-  height: 46px;
-  width: 26px;
-  margin: 0 auto;
-}
-
-/* アニメーション（名前が既存のものと被らないよう変更） */
-@keyframes scroll-animation {
-  0% {
-    opacity: 0;
-    top: 15%;
+@media (max-width: 48rem) {
+  /* 1. 全体レイアウト：横並びを縦並びに */
+  .dual-flex,
+  .access-flex,
+  .about-new-layout {
+    flex-direction: column;
+    gap: var(--space-4);
   }
-  50% {
-    opacity: 1;
+
+  /* 2. ヒーロー：文字をスマホサイズに */
+  .hero-content h2 {
+    font-size: var(--font-xl);
   }
-  100% {
-    opacity: 0;
-    top: 50%;
+
+  .hero-content p {
+    font-size: var(--font-m);
+  }
+
+  /* 固定バーの中身を上下2段に並べる */
+  .bottom-bar {
+    height: auto;
+    padding: 6px 0;
+  }
+
+  /* ラベルとニュースを1行に収めるための設定 */
+  .bar-inner {
+    display: flex;
+    flex-direction: row; /* 横並びにする */
+    flex-wrap: wrap;    /* 3つ目の要素（営業中）は下に落ちるようにする */
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0; 
+  }
+
+  /* Newsラベル：左端に固定 */
+  .news-label-mini {
+    flex-shrink: 0;
+    margin-right: var(--space-2);
+    font-size: var(--font-s);
+    padding: 2px 6px;
+    background: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  /* ニュースが流れる窓：残りの横幅をすべて使う */
+  .ticker-wrapper {
+    flex: 1; 
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* 営業中バッジと時間：これは次の行（2段目）へ */
+  .bar-info {
+    display: flex !important;
+    width: 100%;        /* 幅を100%にすることで強制的に改行させる */
+    justify-content: center;
+    margin: var(--space-1);
+    padding-top: 4px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    gap: var(--space-2);
+  }
+  
+  .badge-status {
+    margin-right: 0;
+  }
+
+  /* 3. About：縦書きを横書きに戻し、位置を調整 */
+  .about-top {
+    display: flex;
+    flex-direction: column;
+  }
+  .vertical-message {
+    position: static;
+    writing-mode: horizontal-tb;
+    font-size: var(--font-xl);
+    padding: var(--space-4) 0;
+    text-align: center;
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  .line-2 {
+    margin-top: 0.5em; /* 横書き時の行間 */
+    margin-right: 0;
+  }
+  .about-bottom {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  /* 4. メニュー：1列または2列に自動調整 */
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  /* 5. アクセス：地図の幅を画面いっぱいに */
+  .map-placeholder, 
+  .map-placeholder iframe,
+  .calendar-beige iframe {
+    width: 100% !important;
+    height: 300px;
+  }
+  .access-info dl {
+    grid-template-columns: 1fr; /* 項目名と内容を縦に並べる */
+    gap: 0.5rem;
+  }
+
+  /* 6. 固定バー：要素を整理 */
+  .bar-info {
+    display: none; /* スマホでは時間を隠す（またはtickerを短くする） */
+  }
+  
+  /* 既存の記述もここに含まれる */
+  .about-image {
+    flex: 0 0 100%;
+    margin-bottom: var(--space-4);
   }
 }
