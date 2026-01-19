@@ -308,9 +308,10 @@ body {
 
 .news-item {
   display: flex;
+  flex-wrap: wrap;       /* ★入り切らない時に折り返す設定（2段にする鍵） */
   gap: var(--space-2);
   align-items: center;
-  padding: var(--space-1) 0;
+  padding: var(--space-3) 0; /* 上下余白を少し広げると読みやすくなります */
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -318,6 +319,7 @@ body {
   color: var(--color-accent);
   font-weight: var(--weight-bold);
   font-size: var(--font-s);
+  min-width: 90px;       /* 日付の幅を揃える */
 }
 
 .news-badge {
@@ -328,11 +330,30 @@ body {
   font-size: var(--font-xs);
   border-radius: 2px;                
   flex-shrink: 0;
-  width: 4rem; 
+  width: 5.5rem;         /* 少し広めに調整 */
   text-align: center; 
-  display: inline-block; 
+  display: inline-block;
+}
+/* ★ここが重要：本文を強制的に2段目へ */
+.news-item p {
+  flex-basis: 100%;      /* 幅100%を主張させて、日付とバッジの下に落とす */
+  margin: var(--space-1) 0 0 0; /* 上に少しだけ隙間を作る */
+  font-size: var(--font-s);
+  line-height: 1.6;
+  color: var(--primary-900);
 }
 
+/* PCなどの広い画面だけ「横1列」に戻したい場合のみ追加 */
+@media (min-width: 60rem) {
+  .news-item {
+    flex-wrap: nowrap;   /* 折り返さない */
+  }
+  .news-item p {
+    flex-basis: auto;    /* 100%を解除 */
+    margin-top: 0;       /* 隙間をリセット */
+    margin-left: var(--space-2); /* 横に隙間を作る */
+  }
+}
 /* =====================
    About
 ===================== */
@@ -715,8 +736,8 @@ iframe[src*="google.com/maps"] {
     display: flex !important;
     width: 100%;        /* 幅を100%にすることで強制的に改行させる */
     justify-content: center;
-    margin: var(--space-1);
-    padding-top: var(--space-1);
+    /* margin: var(--space-1); */
+    padding: var(--space-2);
     border-top: 1px solid rgba(255,255,255,0.1);
     gap: var(--space-2);
   }
